@@ -13,7 +13,7 @@ class RMSNorm(nn.Module):
 
     def forward(self,x:torch.Tensor)->torch.Tensor:
 
-        t,dtype = x.float(),x.dtype
+        t = x.float()
         t = (t * torch.rsqrt(torch.mean(t**2,dim=-1,keepdim=True)+self.eps)).type_as(x)
 
         return t*self.scale  
